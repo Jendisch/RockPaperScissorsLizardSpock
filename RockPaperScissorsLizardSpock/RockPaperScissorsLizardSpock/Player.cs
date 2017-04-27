@@ -11,6 +11,7 @@ namespace RockPaperScissorsLizardSpock
 
         public int playerScore;
         public int playerChoice;
+        public string actualWord;
         //public string playerChoice;
 
         public Player()

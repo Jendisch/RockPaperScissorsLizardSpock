@@ -10,7 +10,6 @@ namespace RockPaperScissorsLizardSpock
     {
 
         Random random = new Random();
-        string word;
 
         public AI()
         {
@@ -24,23 +23,23 @@ namespace RockPaperScissorsLizardSpock
             switch (randomPick)
             {
                 case 0:
-                    word = "rock";
+                    actualWord = "rock";
                     playerChoice = 0;
                     break;
                 case 1:
-                    word = "paper";
+                    actualWord = "paper";
                     playerChoice = 1;
                     break;
                 case 2:
-                    word = "scissors";
+                    actualWord = "scissors";
                     playerChoice = 2;
                     break;
                 case 3:
-                    word = "spock";
+                    actualWord = "spock";
                     playerChoice = 3;
                     break;
                 case 4:
-                    word = "lizard";
+                    actualWord = "lizard";
                     playerChoice = 4;
                     break;
                 default:
@@ -48,8 +47,7 @@ namespace RockPaperScissorsLizardSpock
                     PickAction();
                     break;
             }
-            Console.WriteLine("Looks like the computer chose " + word + ".");
-            Console.ReadKey();
+            Console.WriteLine("Looks like the computer chose " + actualWord + ".");
 
         }
 

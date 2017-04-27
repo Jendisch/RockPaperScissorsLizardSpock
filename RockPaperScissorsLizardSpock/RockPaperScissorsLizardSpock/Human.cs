@@ -9,7 +9,7 @@ namespace RockPaperScissorsLizardSpock
     class Human : Player
     {
 
-        string actualWord;
+        
 
         public Human()
         {
