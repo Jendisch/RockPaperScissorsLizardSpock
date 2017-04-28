@@ -13,7 +13,6 @@ namespace RockPaperScissorsLizardSpock
 
             Game game = new Game();
             game.StartGame();
-            
 
         }
     }

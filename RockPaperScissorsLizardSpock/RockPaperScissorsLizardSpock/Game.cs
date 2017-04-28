@@ -23,7 +23,12 @@ namespace RockPaperScissorsLizardSpock
                 SetPlayerTurn();
                 FindWinner();
             }
+            SQLConnection connect = new SQLConnection();
+            connect.InsertData(playerOne.playerName, playerOne.playerScore);
+            connect.InsertData(playerTwo.playerName, playerTwo.playerScore);
             RevealWinner();
+            AskForResults();
+            Console.ReadKey();
         }
 
 
@@ -46,12 +51,19 @@ namespace RockPaperScissorsLizardSpock
                 case "1":
                     Console.WriteLine("It looks like it's you versus the computer... may the odds be ever in your favor!");
                     playerOne = new Human();
+                    Console.WriteLine("Please enter your name player one.");
+                    playerOne.SetPlayerName();
                     playerTwo = new AI();
+                    playerTwo.SetPlayerName();
                     break;
                 case "2":
                     Console.WriteLine("Human versus Human huh? Have fun you two!");
                     playerOne = new Human();
+                    Console.WriteLine("Please enter your name player one.");
+                    playerOne.SetPlayerName();
                     playerTwo = new Human();
+                    Console.WriteLine("Please enter your name player two.");
+                    playerTwo.SetPlayerName();
                     break;
                 default:
                     Console.WriteLine("Not a valid response. Please choose either '1' or '2'.");
@@ -62,9 +74,9 @@ namespace RockPaperScissorsLizardSpock
 
         private void SetPlayerTurn()
         {
-            Console.WriteLine("Player 1, you're up!");
+            Console.WriteLine("\n" + playerOne.playerName + " you're up!");
             playerOne.PickAction();
-            Console.WriteLine("Player 2, you're up!");
+            Console.WriteLine("\n" + playerTwo.playerName + " you're up!");
             playerTwo.PickAction();
         }
 
@@ -102,8 +114,31 @@ namespace RockPaperScissorsLizardSpock
             {
                 Console.WriteLine("Congrats player two! You won!");
             }
-            Console.ReadKey();
         }
+
+        public void AskForResults()
+        {
+            Console.WriteLine("Would you like to see the High Scorers for Rock Paper Scissors Lizard Spock? Yes or no?");
+            string choice = Console.ReadLine();
+            string choiceLower = choice.ToLower();
+            switch (choiceLower)
+            {
+                case "yes":
+                    SQLConnection connect = new SQLConnection();
+                    string highScorers = connect.CreateConnection();
+                    Console.WriteLine(highScorers);
+                    Console.WriteLine("Press any key to end the game.");
+                    break;
+                case "no":
+                    Console.WriteLine("No problem, thanks for playing! Press any key to end the game.");
+                    break;
+                default:
+                    Console.WriteLine("Not a valid response. Please choose 'yes' or 'no'.");
+                    AskForResults();
+                    break;
+            }
+        }
+
 
     }
 }

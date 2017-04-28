@@ -11,9 +11,28 @@ namespace RockPaperScissorsLizardSpock
 
         Random random = new Random();
 
-        public AI()
+        public override void SetPlayerName()
         {
+            Console.WriteLine("Press any key to randomly generate your evil computer AI's name.");
+            Console.ReadKey();
+            int randomPick = random.Next(0, 3);
+            switch (randomPick)
+            {
+                case 0:
+                    playerName = "AndrewBot";
+                    break;
+                case 1:
+                    playerName = "MikeBot";
+                    break;
+                case 2:
+                    playerName = "AdamBot";
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine("Your opponent will be " + playerName + ".");
         }
+
 
         public override void PickAction()
         {

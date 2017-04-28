@@ -9,10 +9,9 @@ namespace RockPaperScissorsLizardSpock
     class Human : Player
     {
 
-        
-
-        public Human()
+        public override void SetPlayerName()
         {
+            playerName = Console.ReadLine();
         }
 
         public override void PickAction()
